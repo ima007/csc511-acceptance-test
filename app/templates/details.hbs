@@ -1,9 +1,9 @@
 <header class="details__header">
   <h2>{{model.business.name}}</h2>
   {{#if model.favorite}}
-    <button {{action "unsave"}}>Unsave</button>
+    <button class="unsave" {{action "unsave"}}>Unsave</button>
   {{else}}
-    <button {{action "save"}}>Save</button>
+    <button class="save" {{action "save"}}>Save</button>
   {{/if}}
 </header>
 <ul>

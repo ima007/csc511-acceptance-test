@@ -9,9 +9,9 @@
   {{#if model.business}}
     <ul class="autocomplete-results">
       {{#each model.business as |business|}}
-      <li>
-        <LinkTo @route='details' @model={{business.id}}>{{business.name}}</LinkTo>
-      </li>
+        <li>
+          <LinkTo @route="details" @model={{business.id}}>{{business.name}}</LinkTo>
+        </li>
       {{/each}}
     </ul>
   {{/if}}

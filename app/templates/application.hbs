@@ -1,4 +1,3 @@
-
 {{#if session.isAuthenticated}}
   <nav>
     <ul>
@@ -6,16 +5,16 @@
         <LinkTo @route="index">Search</LinkTo>
       </li>
       <li>
-        <LinkTo @route="favorites">Favorites</LinkTo>
+        <LinkTo @class="favorites" @route="favorites">Favorites</LinkTo>
       </li>
       <li>
         Logged in as {{ session.data.authenticated.user.displayName }}
-        <button {{action "logout"}}>Sign out</button>
+        <button class="sign-out" {{action "logout"}}>Sign out</button>
       </li>
     </ul>
   </nav>
   {{outlet}}
 {{else}}
-  <button {{action "login"}}>Sign in with Google</button>
+  <button class="sign-in" {{action "login"}}>Sign in with Google</button>
 {{/if}}
 
