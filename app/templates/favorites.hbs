@@ -1,8 +1,10 @@
 <h2>Favorites</h2>
 <ul>
-{{#each model as |favorite|}}
-  <li><LinkTo @route='details' @model={{favorite.yelpid}}>{{favorite.name}}</LinkTo></li>
-{{else}}
-  <li>Darn! Nothing saved!</li>
-{{/each}}
+  {{#each model as |favorite|}}
+    <li>
+      <LinkTo @route="details" @model={{favorite.yelpid}}>{{favorite.name}}</LinkTo>
+    </li>
+  {{else}}
+    <li>Darn! Nothing saved!</li>
+  {{/each}}
 </ul>

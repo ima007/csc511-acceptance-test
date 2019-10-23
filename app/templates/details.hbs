@@ -1,13 +1,13 @@
 <header class="details__header">
   <h2>{{model.business.name}}</h2>
   {{#if model.favorite}}
-  <button {{action 'unsave'}}>Unsave</button>
+    <button {{action "unsave"}}>Unsave</button>
   {{else}}
-  <button {{action 'save'}}>Save</button>
+    <button {{action "save"}}>Save</button>
   {{/if}}
 </header>
 <ul>
-<li>URL: {{model.business.url}}</li>
+  <li>URL: {{model.business.url}}</li>
 </ul>
 
 {{outlet}}
