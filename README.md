@@ -1,4 +1,15 @@
-# ember-apollo-example
+# Acceptance Test Example
+
+You will need to install `ember-sinon` via `ember install ember-sinon` for this example to work.
+
+Check out `tests/acceptance/main-test.js` to see an acceptance test example. Note the usage of `sinon` to stub out the `query` and `watchQuery` methods for the store and apollo services.
+
+Navigate to http://localhost:4200/tests/index.html to see all of your tests running. Try seeing if you can fix all the ESLint errors in your app.
+
+Read more about creating application (acceptance) tests: https://guides.emberjs.com/release/testing/acceptance/
+
+
+## Previous instructions:
 
 This repo shows an example of how to query graphql with ember-apollo-client, using the Yelp API. It also shows an example proxy that can be leveraged.
 
