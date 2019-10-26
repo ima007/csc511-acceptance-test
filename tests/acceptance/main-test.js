@@ -37,6 +37,16 @@ module('Acceptance | main page', function(hooks) {
 
   test('visiting detail page', async function(assert) {
     const store = this.owner.lookup('service:store');
+    const apollo = this.owner.lookup('service:apollo');
+
+    sinon.stub(apollo, 'watchQuery').callsFake(function() {
+      return RSVP.resolve(
+        EmberObject.create({
+          id: 'H4jJ7XB3CetIr1pg56CczQ',
+          name: 'Levain Bakery'
+        })
+      );
+    });
 
     sinon.stub(store, 'query').callsFake(function() {
       return RSVP.resolve(A());
@@ -47,21 +57,33 @@ module('Acceptance | main page', function(hooks) {
       displayName: 'Coolio'
     });
 
-    await visit('/details/TthttjDCINv6jOV28bEphg');
+    await visit('/details/H4jJ7XB3CetIr1pg56CczQ');
 
-    assert.equal(currentURL(), '/details/TthttjDCINv6jOV28bEphg');
+    assert.equal(currentURL(), '/details/H4jJ7XB3CetIr1pg56CczQ');
     assert.dom('.sign-out').exists();
     assert.dom('.favorites').exists();
-    assert.dom('h2').hasText('Chip NYC');
+    assert.dom('h2').hasText('Levain Bakery');
     assert.dom('.save').exists();
   });
 
   test('visiting detail page saved', async function(assert) {
     const store = this.owner.lookup('service:store');
+    const apollo = this.owner.lookup('service:apollo');
+
+    const mockYelpPlace = {
+      name: 'Chip NYC',
+      id: 'TthttjDCINv6jOV28bEphg'
+    };
 
     const favoriteModel = EmberObject.create({
-      name: 'Chip NYC',
-      yelpid: 'TthttjDCINv6jOV28bEphg'
+      name: mockYelpPlace.name,
+      yelpid: mockYelpPlace.id
+    });
+
+    const graphqlModelMock = EmberObject.create(mockYelpPlace);
+
+    sinon.stub(apollo, 'watchQuery').callsFake(function() {
+      return RSVP.resolve(graphqlModelMock);
     });
 
     sinon.stub(store, 'query').callsFake(function() {
